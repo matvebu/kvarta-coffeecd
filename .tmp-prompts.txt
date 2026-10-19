@@ -1,0 +1,201 @@
+--- 1 Monday, Oct 19, 2026, 2:48 PM (UTC+3) len=346
+kvarta-coffee/
+├── public/
+│   └── images/
+├── src/
+│   ├── app/
+│   │   ├── api/lead/
+│   │   ├── page.tsx
+│   │   ├── layout.tsx
+│   │   └── globals.css
+│   ├── components/
+│   ├── lib/
+│   └── types/
+├── design/
+│   ├── stitch-export/
+│   ├── desktop.png
+│   └── mobile.png
+├── docs/
+│   └── ai-workflow.md
+├── AGENTS.md
+└── README.md
+
+do this
+
+
+--- 3 Monday, Oct 19, 2026, 3:30 PM (UTC+3) len=1216
+We are building a landing page for "Кварта", a small coffee roastery in Minsk.
+
+The visual design is already finalized in Figma, and I have an export from Google Stitch.
+
+Project files:
+- design/stitch-export — exported source code
+- design/desktop_main.png design/desktop_footer.png— desktop reference
+- design/mobile.png — mobile reference
+
+Your task:
+
+1. Inspect the existing Stitch export.
+2. Identify its framework, assets, styles, fonts and dependencies.
+3. Adapt the design into the existing Next.js App Router project.
+4. Use TypeScript and Tailwind CSS.
+5. Extract meaningful reusable components as per design for example:
+   - Header
+   - Hero
+   - CoffeeProducts
+   - Subscription
+   - Roa
+
+--- 5 Monday, Oct 19, 2026, 3:49 PM (UTC+3) len=108
+hero image looks fine but other 2 look blury on localhost but in images folder i can see they are not blurry
+
+--- 6 Monday, Oct 19, 2026, 3:52 PM (UTC+3) len=826
+just to make shure go with the following prompt to identify any issues in responsiveness if present 
+Improve the responsiveness and interactions of the Kvarta landing page while preserving the approved Figma design.
+
+Requirements:
+
+1. Support mobile screens from 320px wide.
+2. Ensure there is no horizontal scrolling.
+3. Make navigation usable on mobile.
+4. Ensure all text is readable and buttons are touch-friendly.
+5. Connect product CTAs to the lead form.
+6. When a product CTA is clicked, preselect "one_time" and the corresponding product.
+7. When the subscription CTA is clicked, preselect "subscription".
+8. Smoothly scroll to the lead form.
+9. Respect prefers-reduced-motion.
+10. Use semant
+
+--- 7 Monday, Oct 19, 2026, 3:52 PM (UTC+3) len=826
+just to make shure go with the following prompt to identify any issues in responsiveness if present 
+Improve the responsiveness and interactions of the Kvarta landing page while preserving the approved Figma design.
+
+Requirements:
+
+1. Support mobile screens from 320px wide.
+2. Ensure there is no horizontal scrolling.
+3. Make navigation usable on mobile.
+4. Ensure all text is readable and buttons are touch-friendly.
+5. Connect product CTAs to the lead form.
+6. When a product CTA is clicked, preselect "one_time" and the corresponding product.
+7. When the subscription CTA is clicked, preselect "subscription".
+8. Smoothly scroll to the lead form.
+9. Respect prefers-reduced-motion.
+10. Use semant
+
+--- 9 Monday, Oct 19, 2026, 4:02 PM (UTC+3) len=54
+кнопки на херо очень узкие не такие как в макете фигма
+
+--- 10 Monday, Oct 19, 2026, 4:08 PM (UTC+3) len=1233
+Implement the database layer for the Kvarta coffee landing page using Supabase PostgreSQL.
+
+I will manually create the Supabase project, execute SQL in Supabase SQL Editor, and configure environment variables.
+
+Your tasks:
+
+1. Generate a SQL migration that creates the `leads` table with all required fields.
+2. Implement atomic duplicate prevention for the same normalized phone number within 10 minutes, including concurrent requests.
+3. Create a server-only Supabase client using `@supabase/supabase-js`.
+4. Use environment variable names:
+   - SUPABASE_URL
+   - SUPABASE_SECRET_KEY
+5. Create `.env.example` containing placeholders only.
+6. Add appropriate database indexes.
+7. Ensure lead data is
+
+
+--- 14 Monday, Oct 19, 2026, 4:38 PM (UTC+3) len=1365
+Implement the complete lead submission flow for the Kvarta landing page.
+
+Use:
+- React Hook Form
+- Zod
+- POST /api/lead in a Next.js Route Handler
+- The Supabase database function implemented previously
+
+Frontend requirements:
+1. Required name, phone and interest fields.
+2. Optional comment and selected product.
+3. Support Belarusian phone numbers in formats such as:
+   +375291234567
+   375291234567
+   80291234567
+   +375 (29) 123-45-67
+4. Normalize valid numbers to +375XXXXXXXXX.
+5. Reject invalid country codes, lengths and unsupported prefixes.
+6. Display clear validation messages in Russian.
+7. Disable the submit button while the request is pending.
+8. Show success feedback without resett
+
+--- 16 Monday, Oct 19, 2026, 4:52 PM (UTC+3) len=73
+почему если пишет что заявка отправлена а кнопка в моде дизэйбл все равно
+
+--- 17 Monday, Oct 19, 2026, 4:55 PM (UTC+3) len=138
+ок , но когда я еще раз жму на кнопку в течеие 10 минут не выскакивает никакое ui предупреждение что заказ уже сделан типа по этому номеру
+
+--- 18 Monday, Oct 19, 2026, 4:59 PM (UTC+3) len=86
+выделяй ошибки в форме под инпутами красным или инпут выдели красны плюс текст красным
+
+--- 22 Monday, Oct 19, 2026, 5:07 PM (UTC+3) len=1026
+если это еще не заплементировано то сделай
+Implement first-touch marketing attribution for the lead form.
+
+Capture on the initial page visit:
+- utm_source
+- utm_medium
+- utm_campaign
+- utm_content
+- utm_term
+- yclid
+- referrer
+- landing_page (original landing URL)
+
+Requirements:
+1. Read attribution from the initial page URL.
+2. Persist the initial attribution for the current tab session using sessionStorage.
+3. Do not overwrite the original attribution during internal navigation.
+4. Include attribution in the lead submission payload.
+5. Validate and limit the lengths of attribution values on the server.
+6. Store the fields in PostgreSQL.
+7. Treat attribution as untrusted client-provided data
+
+--- 24 Monday, Oct 19, 2026, 5:18 PM (UTC+3) len=1092
+Act as a senior QA engineer and review the Kvarta landing page.
+
+Test the following scenarios:
+
+1. Valid Belarusian phone number is accepted.
+2. Invalid phone number is rejected.
+3. Phone numbers in different supported formats are normalized.
+4. Two concurrent submissions with the same phone create only one database record.
+5. Repeated submission within 10 minutes does not create a new record.
+6. A submission after 10 minutes can create a new record.
+7. Server errors are displayed clearly to the user.
+8. Form data remains intact after failed submissions.
+9. UTM parameters and landing page information are stored.
+10. Subscription and product buttons preselect the correct interest.
+11. Mobile 
+
+--- 25 Monday, Oct 19, 2026, 5:26 PM (UTC+3) len=76
+какпроверяется кейс после 10 минут если 10 минут еще даже реально не прошло,
+
+--- 28 Monday, Oct 19, 2026, 5:28 PM (UTC+3) len=1124
+то есть этот промт исполнен Act as a senior QA engineer and review the Kvarta landing page.
+
+Test the following scenarios:
+
+1. Valid Belarusian phone number is accepted.
+2. Invalid phone number is rejected.
+3. Phone numbers in different supported formats are normalized.
+4. Two concurrent submissions with the same phone create only one database record.
+5. Repeated submission within 10 minutes does not create a new record.
+6. A submission after 10 minutes can create a new record.
+7. Server errors are displayed clearly to the user.
+8. Form data remains intact after failed submissions.
+9. UTM parameters and landing page information are stored.
+10. Subscription and product buttons preselect the c
+
+--- 29 Monday, Oct 19, 2026, 5:31 PM (UTC+3) len=120
+в тип заказа выдляетс ятолько первый чекбокс  с Разовый заказ ? и потом переходит на сорт сразу, подписка не выделяется4
+
+
