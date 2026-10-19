@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "tsx --test tests/attribution.test.ts tests/lead-submit.test.ts",
+    "test": "tsx --test tests/phone.test.ts tests/attribution.test.ts tests/lead-submit.test.ts",
     "db:check": "node --env-file=.env.local scripts/check-supabase.mjs"
   },
   "dependencies": {

@@ -234,14 +234,21 @@ export function LeadForm({ className = "" }: { className?: string }) {
           className="flex flex-col gap-2"
           aria-invalid={errors.interest ? true : undefined}
           aria-describedby={errors.interest ? "order-type-error" : undefined}
+          onKeyDown={(event) => {
+            if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp"].includes(event.key)) return;
+            event.preventDefault();
+            const next = document.activeElement?.id === "order-type-subscription" ? "one_time" : "subscription";
+            setOrderType(next);
+            document.getElementById(next === "one_time" ? "order-type-one-time" : "order-type-subscription")?.focus();
+          }}
         >
           <legend className={labelClass}>Тип заказа</legend>
           <div className="grid grid-cols-1 gap-2 min-[375px]:grid-cols-2">
-            <label className={`flex min-h-11 cursor-pointer items-center gap-2 border bg-surface-container-low px-3 font-body text-body-md has-checked:border-accent ${errors.interest ? "border-error" : "border-surface-container-highest"}`}>
+            <label className={`flex min-h-11 cursor-pointer items-center gap-2 border bg-surface-container-low px-3 font-body text-body-md has-checked:border-accent has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-secondary ${errors.interest ? "border-error" : "border-surface-container-highest"}`}>
               <input
                 id="order-type-one-time"
                 type="radio"
-                name="orderType"
+                name="order-type-one-time"
                 value="one_time"
                 checked={orderType === "one_time"}
                 onChange={() => setOrderType("one_time")}
@@ -249,11 +256,11 @@ export function LeadForm({ className = "" }: { className?: string }) {
               />
               Разовый заказ
             </label>
-            <label className={`flex min-h-11 cursor-pointer items-center gap-2 border bg-surface-container-low px-3 font-body text-body-md has-checked:border-accent ${errors.interest ? "border-error" : "border-surface-container-highest"}`}>
+            <label className={`flex min-h-11 cursor-pointer items-center gap-2 border bg-surface-container-low px-3 font-body text-body-md has-checked:border-accent has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-secondary ${errors.interest ? "border-error" : "border-surface-container-highest"}`}>
               <input
                 id="order-type-subscription"
                 type="radio"
-                name="orderType"
+                name="order-type-subscription"
                 value="subscription"
                 checked={orderType === "subscription"}
                 onChange={() => setOrderType("subscription")}
