@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+
+import { AttributionCapture } from "@/components/AttributionCapture";
 import "./globals.css";
 
 const inter = Inter({
@@ -30,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${playfair.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background font-body text-body-md text-on-surface selection:bg-[#e8e2d5] selection:text-[#1e1c14]">
+        <AttributionCapture />
         {children}
       </body>
     </html>

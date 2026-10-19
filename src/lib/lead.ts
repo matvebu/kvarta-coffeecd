@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import { attributionLimits, stripSensitiveQuery } from "@/lib/attribution";
 import { products } from "@/lib/catalog";
 import { normalizeBelarusPhone } from "@/lib/phone";
 import type { LeadOrderType } from "@/types/lead";
@@ -68,24 +69,41 @@ export const leadFormSchema = z.object({
 });
 
 function optionalMeta(max: number) {
-  return z.unknown().transform((value) => {
-    if (typeof value !== "string") return null;
-    const trimmed = value.trim();
-    if (!trimmed || trimmed.length > max) return null;
-    return trimmed;
-  });
+  return z
+    .unknown()
+    .optional()
+    .transform((value) => {
+      if (typeof value !== "string") return null;
+      const trimmed = value.trim();
+      if (!trimmed || trimmed.length > max) return null;
+      return trimmed;
+    });
+}
+
+function optionalUrl(max: number) {
+  return z
+    .unknown()
+    .optional()
+    .transform((value) => {
+      if (typeof value !== "string") return null;
+      const cleaned = stripSensitiveQuery(value).trim();
+      if (!cleaned || cleaned.length > max) return null;
+      return cleaned;
+    });
 }
 
 export const leadRequestSchema = leadFormSchema
   .and(
     z.object({
-      utmSource: optionalMeta(200),
-      utmMedium: optionalMeta(200),
-      utmCampaign: optionalMeta(200),
-      utmTerm: optionalMeta(200),
-      utmContent: optionalMeta(200),
-      referrer: optionalMeta(500),
-      landingPath: optionalMeta(500),
+      utmSource: optionalMeta(attributionLimits.utm),
+      utmMedium: optionalMeta(attributionLimits.utm),
+      utmCampaign: optionalMeta(attributionLimits.utm),
+      utmTerm: optionalMeta(attributionLimits.utm),
+      utmContent: optionalMeta(attributionLimits.utm),
+      yclid: optionalMeta(attributionLimits.yclid),
+      referrer: optionalUrl(attributionLimits.referrer),
+      landingPath: optionalUrl(attributionLimits.landingPath),
+      landingPage: optionalUrl(attributionLimits.landingPage),
     }),
   )
   .transform((data) => ({

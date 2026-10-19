@@ -37,8 +37,10 @@ create table public.leads (
   utm_campaign text,
   utm_term text,
   utm_content text,
+  yclid text,
   referrer text,
   landing_path text,
+  landing_page text,
   constraint leads_name_not_blank check (char_length(btrim(name)) between 1 and 120),
   constraint leads_phone_not_blank check (char_length(btrim(phone)) between 1 and 40),
   constraint leads_phone_normalized_format check (phone_normalized ~ '^375\d{9}$'),
@@ -50,8 +52,10 @@ create table public.leads (
   constraint leads_utm_campaign_length check (utm_campaign is null or char_length(utm_campaign) <= 200),
   constraint leads_utm_term_length check (utm_term is null or char_length(utm_term) <= 200),
   constraint leads_utm_content_length check (utm_content is null or char_length(utm_content) <= 200),
+  constraint leads_yclid_length check (yclid is null or char_length(yclid) <= 200),
   constraint leads_referrer_length check (referrer is null or char_length(referrer) <= 500),
-  constraint leads_landing_path_length check (landing_path is null or char_length(landing_path) <= 500)
+  constraint leads_landing_path_length check (landing_path is null or char_length(landing_path) <= 500),
+  constraint leads_landing_page_length check (landing_page is null or char_length(landing_page) <= 1000)
 );
 
 comment on table public.leads is

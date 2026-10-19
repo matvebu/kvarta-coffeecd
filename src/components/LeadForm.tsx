@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useForm, type UseFormRegisterReturn } from "react-hook-form";
 
 import { useOrderSelection } from "@/components/OrderSelection";
+import { captureAttribution, readFirstTouch } from "@/lib/attribution";
 import { products } from "@/lib/catalog";
 import { duplicateLeadMessage, leadFormSchema } from "@/lib/lead";
 import type { z } from "zod";
@@ -48,17 +49,15 @@ function fingerprint(values: FormValues) {
 }
 
 function readAttribution() {
-  const params = new URLSearchParams(window.location.search);
-  const pick = (key: string) => params.get(key) ?? "";
-  return {
-    utmSource: pick("utm_source"),
-    utmMedium: pick("utm_medium"),
-    utmCampaign: pick("utm_campaign"),
-    utmTerm: pick("utm_term"),
-    utmContent: pick("utm_content"),
+  const current = {
+    href: window.location.href,
     referrer: document.referrer,
-    landingPath: `${window.location.pathname}${window.location.search}`,
   };
+  try {
+    return readFirstTouch(window.sessionStorage, current);
+  } catch {
+    return captureAttribution(current.href, current.referrer);
+  }
 }
 
 export function LeadForm({ className = "" }: { className?: string }) {

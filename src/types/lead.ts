@@ -14,6 +14,8 @@ export type Lead = {
   utm_campaign: string | null;
   utm_term: string | null;
   utm_content: string | null;
+  yclid: string | null;
   referrer: string | null;
   landing_path: string | null;
+  landing_page: string | null;
 };
