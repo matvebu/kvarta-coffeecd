@@ -18,6 +18,7 @@
   --color-surface-container-highest: #e5e2dc;
   --color-outline: #807571;
   --color-outline-variant: #d1c4bf;
+  --color-error: #ba1a1a;
 
   --spacing-gutter: 1.5rem;
   --spacing-gutter-desktop: 2.5rem;
@@ -76,4 +77,16 @@ body {
   background: var(--color-background);
   color: var(--color-on-surface);
   font-family: var(--font-body);
+}
+
+#order-form [aria-invalid="true"] {
+  border-color: #ba1a1a;
+}
+
+#order-form fieldset[aria-invalid="true"] label {
+  border-color: #ba1a1a;
+}
+
+#order-form .form-error {
+  color: #d32f2f !important;
 }
