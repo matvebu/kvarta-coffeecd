@@ -10,7 +10,7 @@ export function About({ className = "" }: { className?: string }) {
   return (
     <section
       id="o-nas"
-      className={`scroll-mt-20 bg-surface-container px-gutter py-space-lg md:border-b md:border-surface-container-highest md:bg-transparent md:px-gutter-desktop md:py-space-xl ${className}`}
+      className={`scroll-mt-20 bg-surface-container px-4 py-space-lg min-[375px]:px-gutter md:border-b md:border-surface-container-highest md:bg-transparent md:px-gutter-desktop md:py-space-xl ${className}`}
     >
       <div className="relative mb-space-md aspect-[16/10] overflow-hidden md:hidden">
         <Image

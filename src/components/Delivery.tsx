@@ -1,7 +1,7 @@
 export function Delivery({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
-      <div className="bg-surface-container-low px-gutter py-space-lg md:bg-transparent md:p-0">
+      <div className="bg-surface-container-low px-4 py-space-lg min-[375px]:px-gutter md:bg-transparent md:p-0">
         <span className="font-body text-label-caps uppercase text-secondary">
           Брю-бар & Ростери
         </span>
@@ -18,11 +18,11 @@ export function Delivery({ className = "" }: { className?: string }) {
         </p>
 
         <div className="mt-space-sm flex flex-col gap-2 bg-surface p-space-md md:hidden">
-          <div className="flex items-baseline justify-between gap-space-sm">
+          <div className="flex items-baseline justify-between gap-2">
             <span className="font-body text-body-sm font-semibold text-on-surface">
               Самовывоз
             </span>
-            <span className="font-body text-label-meta uppercase text-secondary">
+            <span className="text-right font-body text-label-meta uppercase text-secondary">
               Бесплатно + эспрессо
             </span>
           </div>

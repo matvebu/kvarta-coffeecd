@@ -1,13 +1,11 @@
 import { products } from "@/lib/catalog";
-
-const cartLink =
-  "inline-flex shrink-0 items-center justify-center bg-accent font-body text-label-caps uppercase text-white shadow-sm transition-colors hover:bg-accent-hover";
+import { ProductCta } from "@/components/OrderSelection";
 
 export function CoffeeProducts({ className = "" }: { className?: string }) {
   return (
     <section
       id="sorta"
-      className={`scroll-mt-20 bg-surface-container-low px-gutter py-space-lg md:border-b md:border-surface-container-highest md:bg-transparent md:px-gutter-desktop md:py-space-xl ${className}`}
+      className={`scroll-mt-20 bg-surface-container-low px-4 py-space-lg min-[375px]:px-gutter md:border-b md:border-surface-container-highest md:bg-transparent md:px-gutter-desktop md:py-space-xl ${className}`}
     >
       <div className="mb-space-md flex flex-col gap-1 md:mb-space-xl md:flex-row md:items-end md:justify-between md:gap-space-md">
         <div>
@@ -33,7 +31,7 @@ export function CoffeeProducts({ className = "" }: { className?: string }) {
             className="flex flex-col gap-3 bg-surface p-space-md shadow-sm"
           >
             <div className="flex items-baseline justify-between gap-space-sm">
-              <h3 className="font-display text-title-editorial text-on-surface">
+              <h3 className="min-w-0 font-display text-title-editorial text-on-surface">
                 {product.name}
               </h3>
               <span className="shrink-0 font-display text-title-editorial font-semibold text-on-surface">
@@ -41,12 +39,10 @@ export function CoffeeProducts({ className = "" }: { className?: string }) {
               </span>
             </div>
             <div className="flex items-center justify-between gap-space-sm">
-              <p className="font-body text-body-sm italic text-on-surface-variant">
+              <p className="min-w-0 flex-1 font-body text-body-sm italic text-on-surface-variant">
                 {product.notes} • {product.amount}
               </p>
-              <a href="#order-form" className={`${cartLink} h-8 px-3.5`}>
-                Хочу
-              </a>
+              <ProductCta product={product.name}>Хочу</ProductCta>
             </div>
           </article>
         ))}
@@ -70,9 +66,7 @@ export function CoffeeProducts({ className = "" }: { className?: string }) {
               <span className="font-display text-headline-md font-bold text-on-surface">
                 {product.price} BYN
               </span>
-              <a href="#order-form" className={`${cartLink} px-space-md py-2`}>
-                В корзину
-              </a>
+              <ProductCta product={product.name}>В корзину</ProductCta>
             </div>
           </article>
         ))}

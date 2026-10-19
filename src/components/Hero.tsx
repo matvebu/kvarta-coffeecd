@@ -8,7 +8,7 @@ const quietCta =
 export function Hero({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
-      <section className="relative flex min-h-[580px] items-center justify-center overflow-hidden px-gutter py-12 text-center md:h-[82vh] md:max-h-[820px] md:min-h-[580px] md:px-gutter-desktop md:py-0">
+      <section className="relative flex min-h-[580px] items-center justify-center overflow-hidden px-4 py-12 text-center min-[375px]:px-gutter md:h-[82vh] md:max-h-[820px] md:min-h-[580px] md:px-gutter-desktop md:py-0">
         <Image
           src="/images/hero.jpg"
           alt="Спелые кофейные ягоды на ветке органической фермы"
@@ -48,23 +48,23 @@ export function Hero({ className = "" }: { className?: string }) {
           <div className="flex w-full max-w-[240px] flex-col items-center gap-3 md:max-w-none md:flex-row md:flex-wrap md:justify-center md:gap-space-md">
             <a
               href="#sorta"
-              className={`${solidCta} h-11 w-full md:h-auto md:w-auto md:px-space-lg md:py-space-sm`}
+              className={`${solidCta} h-11 w-full px-space-lg py-space-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:h-auto md:w-auto`}
             >
               Каталог сортов
             </a>
             <a
               href="#podpiska"
-              className={`${quietCta} h-10 w-full bg-surface-container-high/90 md:h-auto md:w-auto md:bg-surface/90 md:px-space-lg md:py-space-sm md:shadow-md md:backdrop-blur-sm md:hover:bg-surface`}
+              className={`${quietCta} h-11 w-full bg-surface-container-high/90 px-space-lg py-space-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary md:h-auto md:w-auto md:bg-surface/90 md:shadow-md md:backdrop-blur-sm md:hover:bg-surface`}
             >
               Подписка
             </a>
           </div>
         </div>
       </section>
-      <div className="bg-surface py-4 text-center md:hidden">
+      <div className="bg-surface text-center md:hidden">
         <a
           href="#o-nas"
-          className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary"
+          className="inline-flex min-h-11 items-center px-4 font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
         >
           Наш подход
         </a>

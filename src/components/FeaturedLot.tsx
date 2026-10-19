@@ -1,7 +1,5 @@
 import Image from "next/image";
-
-const cta =
-  "inline-flex items-center justify-center bg-accent px-space-md py-space-sm font-body text-label-caps uppercase text-white shadow-sm transition-colors hover:bg-accent-hover";
+import { ProductCta } from "@/components/OrderSelection";
 
 export function FeaturedLot({ className = "" }: { className?: string }) {
   return (
@@ -17,7 +15,7 @@ export function FeaturedLot({ className = "" }: { className?: string }) {
             fill
             unoptimized
             sizes="(min-width: 1024px) 58vw, 100vw"
-            className="object-cover transition-transform duration-700 hover:scale-[1.02]"
+            className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:hover:scale-[1.02]"
           />
         </div>
         <div className="lg:col-span-5 lg:pl-space-md">
@@ -39,9 +37,7 @@ export function FeaturedLot({ className = "" }: { className?: string }) {
             <span className="font-display text-headline-md font-bold text-on-surface">
               32 BYN
             </span>
-            <a href="#order-form" className={cta}>
-              В корзину
-            </a>
+            <ProductCta product="Эфиопия Иргачеффе">В корзину</ProductCta>
           </div>
         </div>
       </div>

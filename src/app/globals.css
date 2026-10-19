@@ -65,11 +65,14 @@
   --text-label-caps--font-weight: 600;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
+  overflow-x: clip;
   background: var(--color-background);
   color: var(--color-on-surface);
   font-family: var(--font-body);

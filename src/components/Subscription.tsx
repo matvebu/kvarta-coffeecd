@@ -1,13 +1,11 @@
 import Image from "next/image";
-
-const cta =
-  "inline-flex items-center justify-center bg-accent text-center font-body text-label-caps uppercase text-white shadow-sm transition-colors hover:bg-accent-hover";
+import { SubscriptionCta } from "@/components/OrderSelection";
 
 export function Subscription({ className = "" }: { className?: string }) {
   return (
     <section
       id="podpiska"
-      className={`scroll-mt-20 bg-surface px-gutter py-space-lg md:bg-transparent md:px-gutter-desktop md:pt-space-xl md:pb-0 ${className}`}
+      className={`scroll-mt-20 bg-surface px-4 py-space-lg min-[375px]:px-gutter md:bg-transparent md:px-gutter-desktop md:pt-space-xl md:pb-0 ${className}`}
     >
       <div className="grid grid-cols-1 items-center gap-space-md lg:grid-cols-12 lg:gap-gutter-desktop">
         <div className="order-2 md:order-1 lg:col-span-5 lg:pr-space-md">
@@ -37,12 +35,9 @@ export function Subscription({ className = "" }: { className?: string }) {
               Кофейная подписка
             </span>
           </div>
-          <a
-            href="#order-form"
-            className={`${cta} h-12 w-full md:h-auto md:w-auto md:px-space-lg md:py-space-sm`}
-          >
+          <SubscriptionCta className="h-12 w-full bg-accent text-center font-body text-label-caps uppercase text-white shadow-sm transition-colors hover:bg-accent-hover md:h-auto md:w-auto md:px-space-lg">
             Оформить подписку
-          </a>
+          </SubscriptionCta>
         </div>
         <div className="relative order-1 aspect-[16/10] overflow-hidden bg-surface-container shadow-sm md:order-2 md:aspect-[4/3] lg:col-span-7">
           <Image
@@ -51,7 +46,7 @@ export function Subscription({ className = "" }: { className?: string }) {
             fill
             unoptimized
             sizes="(min-width: 1024px) 58vw, 100vw"
-            className="object-cover transition-transform duration-700 hover:scale-[1.02]"
+            className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:hover:scale-[1.02]"
           />
           <div className="absolute right-2 bottom-2 bg-surface/90 px-2.5 py-1 backdrop-blur-sm md:hidden">
             <span className="font-body text-[10px] uppercase tracking-wider text-on-surface">

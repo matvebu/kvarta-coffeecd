@@ -1,9 +1,10 @@
 import { IconArrow } from "@/components/Icons";
+import { SubscriptionCta } from "@/components/OrderSelection";
 
 export function Footer() {
   return (
     <footer className="bg-surface-container-low text-on-surface">
-      <div className="px-gutter py-space-lg md:hidden">
+      <div className="px-4 py-space-lg min-[375px]:px-gutter md:hidden">
         <div className="flex flex-col gap-space-md">
           <div className="flex items-baseline justify-between">
             <span className="font-display text-headline-md font-normal text-on-surface">
@@ -80,13 +81,10 @@ export function Footer() {
               Две или четыре пачки сезонного зерна каждого 1-го и 3-го четверга
               месяца с заметками обжарщика.
             </p>
-            <a
-              href="#podpiska"
-              className="inline-flex items-center gap-space-xs font-body text-label-meta uppercase text-secondary transition-colors hover:text-[#752806]"
-            >
+            <SubscriptionCta className="w-fit gap-space-xs bg-transparent font-body text-label-meta uppercase text-secondary shadow-none transition-colors hover:text-[#752806]">
               Оформить подписку
               <IconArrow />
-            </a>
+            </SubscriptionCta>
           </div>
         </div>
         <div className="mt-space-xl flex flex-col items-center justify-between gap-space-sm border-t border-surface-container-highest pt-space-md font-body text-label-meta text-on-surface-variant sm:flex-row">

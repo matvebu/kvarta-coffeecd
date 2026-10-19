@@ -7,11 +7,13 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { LeadForm } from "@/components/LeadForm";
 import { MobileNav } from "@/components/MobileNav";
+import { OrderSelectionProvider } from "@/components/OrderSelection";
 import { Subscription } from "@/components/Subscription";
 
 export default function Home() {
   return (
-    <div id="top" className="flex flex-1 flex-col pb-16 md:pb-0">
+    <OrderSelectionProvider>
+    <div id="top" className="flex min-w-0 flex-1 flex-col overflow-x-clip pb-16 md:pb-0">
       <Header />
       <main className="flex flex-1 flex-col bg-background pt-16 md:pt-20">
         <Hero className="order-1" />
@@ -32,5 +34,6 @@ export default function Home() {
       <Footer />
       <MobileNav />
     </div>
+    </OrderSelectionProvider>
   );
 }
