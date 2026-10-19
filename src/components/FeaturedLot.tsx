@@ -13,7 +13,6 @@ export function FeaturedLot({ className = "" }: { className?: string }) {
             src="/images/cupping.jpg"
             alt="Каппинг свежеобжаренного кофе в мастерской обжарки"
             fill
-            unoptimized
             sizes="(min-width: 1024px) 58vw, 100vw"
             className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:hover:scale-[1.02]"
           />

@@ -44,7 +44,6 @@ export function Subscription({ className = "" }: { className?: string }) {
             src="/images/subscription.jpg"
             alt="Минималистичные упаковки кофе Кварта на деревянном столе"
             fill
-            unoptimized
             sizes="(min-width: 1024px) 58vw, 100vw"
             className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:hover:scale-[1.02]"
           />

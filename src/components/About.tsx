@@ -17,7 +17,6 @@ export function About({ className = "" }: { className?: string }) {
           src="/images/cupping.jpg"
           alt="Каппинг свежеобжаренного кофе из крафтового пакета"
           fill
-          unoptimized
           sizes="100vw"
           className="object-cover"
         />

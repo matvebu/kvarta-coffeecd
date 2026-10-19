@@ -19,10 +19,49 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+const description =
+  "Свежий спешелти кофе небольшими партиями с 2019 года. Жарим в четверг, доставляем в пятницу.";
+
+function metadataBaseUrl() {
+  const candidates = [
+    process.env.SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : undefined,
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+    "http://localhost:3000",
+  ];
+
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    try {
+      return new URL(candidate);
+    } catch {
+      continue;
+    }
+  }
+
+  return new URL("http://localhost:3000");
+}
+
 export const metadata: Metadata = {
+  metadataBase: metadataBaseUrl(),
   title: "Кварта — микрообжарочная в Минске",
-  description:
-    "Свежий спешелти кофе небольшими партиями с 2019 года. Жарим в четверг, доставляем в пятницу.",
+  description,
+  openGraph: {
+    title: "Кварта — микрообжарочная в Минске",
+    description,
+    locale: "ru_RU",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero.jpg",
+        width: 512,
+        height: 286,
+        alt: "Спелые кофейные ягоды на ветке органической фермы",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
